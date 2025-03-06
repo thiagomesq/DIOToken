@@ -62,7 +62,8 @@ contract DIOToken is IERC20 {
     }
 
     function transfer(address _to, uint256 _value) external returns (bool success) {
-        require (_value <= balances[msg.sender]);  
+        require(_to != address(0), "ERC20: transfer to the zero address");
+        require(_value <= balances[msg.sender], "ERC20: transfer amount exceeds balance");  
         balances[msg.sender] -= _value;
         balances[_to] += _value;
         
@@ -70,7 +71,6 @@ contract DIOToken is IERC20 {
         success = true;
     }
 
-    /// @notice `msg.sender` approves `_addr` to spend `_value` tokens
     function approve(address _spender, uint256 _value) external returns (bool success){
         allowed[msg.sender][_spender] = _value;
         
@@ -82,16 +82,17 @@ contract DIOToken is IERC20 {
         remaining = allowed[_owner][_spender];
     }
 
-    /// @param _from The address of the sender
     function transferFrom(address _from, address _to, uint256 _value) external returns (bool success) {
-        require (_value <= balances[_from]);
-        require(_value <= allowed[_from][msg.sender]);  //`_spender` cannot exceed the `ownerAllowance` that is approved by `_from`
+        require(_to != address(0), "ERC20: transfer to the zero address");
+        require(_value <= balances[_from], "ERC20: transfer amount exceeds balance");
+        require(_value <= allowed[_from][msg.sender], "ERC20: transfer amount exceeds allowance");
 
         balances[_from] -= _value;
         allowed[_from][msg.sender] -= _value;
         balances[_to] += _value;
         
         emit Transfer(_from, _to, _value);
+        emit Approval(_from, msg.sender, allowed[_from][msg.sender]);
         success = true;
     }
 }
