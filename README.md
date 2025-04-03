@@ -8,7 +8,7 @@ The `DIOToken` smart contract is an ERC-20 token implementation designed for use
 
 ## Deployment Details
 - **Network**: Ethereum Sepolia Testnet
-- **Contract Address**: 0xe5d7a57b593A0a2F9F1021fE0b470A72d000b58e
+- **Contract Address**: [0xe5d7a57b593A0a2F9F1021fE0b470A72d000b58e](https://sepolia.etherscan.io/address/0xe5d7a57b593a0a2f9f1021fe0b470a72d000b58e)
 - **Deployment Date**: Apr-03-2025 07:28:36 PM UTC
 
 ## Features
