@@ -23,7 +23,7 @@ Below is a placeholder for images or screenshots that demonstrate the successful
 
 ### Deployment Screenshots
 ![Contrato DIO Coin](/assets/contrato.png)
-![Carteira contendo os Tokens](/assets/carteira.png')
+![Carteira contendo os Tokens](/assets/carteira.png)
 
 ## Usage
 Developers and testers can interact with the DIOToken contract using tools such as Remix, Hardhat, or web3.js. Ensure you are connected to the Sepolia testnet before interacting with the contract.
