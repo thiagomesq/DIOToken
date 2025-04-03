@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.28;
+pragma solidity ^0.8.29;
 
 interface IERC20 {
     
@@ -39,22 +39,26 @@ interface IERC20 {
 }
 
 contract DIOToken is IERC20 {
-    string public constant name = "DIO Token";
-    string public constant symbol = "DIO";
-    uint8 public constant decimals = 18;
+    string public name;
+    string public symbol;
+    uint8 public decimals;
+    uint256 public _totalSupply;
 
     mapping (address => uint256) balances;
 
     mapping (address => mapping (address => uint256)) allowed;
 
-    uint256 totalSupply_ = 10 ether;
-
     constructor() {
-        balances[msg.sender] = totalSupply_;
+        decimals = 2;
+        symbol = "DIO";
+        name = "DIO Coin";
+        _totalSupply = 10000000;
+        balances[msg.sender] = _totalSupply;
+        emit Transfer(address(0), msg.sender, _totalSupply);
     }
 
     function totalSupply() external view returns (uint256) {
-       return totalSupply_;
+       return _totalSupply;
     }
 
     function balanceOf(address _owner) external view returns (uint256 balance) {
